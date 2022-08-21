@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .bg {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            background-image: url(http://i.imgur.com/w16HASj.png);
+            background-size: 100% 100%;
+            background-position: top center;
+        }
+    </style>
+    <style>
+        /* Dropdown Button */
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+    <style>
+        .bg {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            background-image: url(http://i.imgur.com/w16HASj.png);
+            background-size: 100% 100%;
+            background-position: top center;
+        }
+
+        .content {
+            margin-top: 20%;
+        }
+
+        .centered {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .InputStyle {
+            border-radius: 25px;
+            border: solid 1px white;
+            background: transparent;
+            width: 300px;
+            padding: 15px 130px;
+        }
+
+
+
+        input,
+        input::-webkit-input-placeholder {
+            font-size: 12px;
+            color: white;
+        }
+
+        .social-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 47%;
+        }
+
+        i {
+            padding: 5px;
+            color: white;
+
+        }
+
+        input,
+        input:focus {
+            border: solid 1px white;
+            outline: 0;
+            -webkit-appearance: none;
+            box-shadow: nones;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .secondLine {
+            font-weight: 350;
+            font-size: 30px;
+            margin-bottom: 15%;
+            color: white;
+
+        }
+
+        .firstLine {
+            font-size: 60px;
+            color: white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .firstLine {
+                font-size: 20px;
+            }
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn {
+                transition: none;
+                height: "70px";
+            }
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #28a745;
+            border-color: #28a745;
+            height: 40px;
+            width: 70px;
+            border-radius: 50%;
+        }
+    </style>
+
+
+    <title>Add Lerning Path</title>
+</head>
+
+<body>
+    <form action="" method="POST">{% csrf_token %}
+
+        <!--   <label id="name">Add Learning Path</label>
+        <input type="text" name="learning_path" id="learning_path" >
+        
+        <input type="submit" id="submit"> -->
+
+
+
+
+
+
+        <!--Div for Background-->
+        <div class="bg text-center">
+
+            <!--Div for Centered Text & Input-->
+            <div class="centered">
+
+                <p class="firstLine"> &nbsp; &nbsp; A D D &nbsp; &nbsp; &nbsp; N E W &nbsp; </p>
+
+                <p class="secondLine">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; Learning Path</p>
+
+                <label for="name" id="name"></label>
+
+                <p> <input class="InputStyle" id="name" name="name" placeholder="Email me when it's ready        
+                            &#xf0e0; " style="font-family:Arial, FontAwesome" type="text"> <input
+                        class="btn btn-success" type="submit" id="submit" value="Submit" /></p>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+        </div>
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+	<link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+	<title>Create Blog</title>
+
+</head>
+
+<body>
+
+	<section style="background-color: rgb(62, 62, 62);">
+		<div class="">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-lg-12 col-xl-11">
+					<div class="card text-black" style="border-radius: 70px;">
+						<div class="card-body p-md-8">
+							<div class="row justify-content-left">
+								<div>
+
+									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add Trainers</p>
+<h1 class="text-center">	{{ learning_path_info }}</h1>
+									<form method="POST" enctype='multipart/form-data'>
+										{% csrf_token %}
+										<label class="form-label" for="trainer_name">
+											<h4>trainer_name</h4>
+										</label><br>
+										<input type="name" id="trainer_name" name="trainer_name" /><br>
+
+										<label class="form-label" for="phone_no">
+											<h4>phone_no</h4>
+										</label><br>
+										<input type="phone_no" id="phone_no" name="phone_no" /><br>
+
+
+										<label class="form-label" for="body">
+											<h4>Optional phone no</h4>
+										</label><br>
+										<input id="phone_no_optional" name='phone_no_optional' /><br>
+
+
+										<label class="form-label" for="email">
+											<h4>email</h4>
+										</label><br>
+										<input type="email" id="email" name="email" /><br>
+
+
+										<label class="form-label" for="email_optional">
+											<h4>email_optional</h4>
+										</label><br>
+										<input id="email_optional" name="email_optional" /><br>
+
+										<div class="d-flex flex-row align-items-center mb-4">
+
+											<div class="form-outline flex-fill mb-0">
+
+												<label class="form-label" for="gender">
+													<h4>gender</h4>
+												</label><br>
+
+												<input type="checkbox" id="status_draft"
+													name="status_draft" /><b>Male</b>
+												<input type="checkbox" id="status_publish" name="status_publish" />
+												<b>Female</b><br>
+
+											</div>
+										</div>
+
+										<label class="form-label" for="adderes">
+											<h4>Write your adderes</h4>
+										</label><br>
+										<textarea id="adderes" name="adderes" placeholder="Write something.."
+											style="height:50px; width:350px;"></textarea><br>
+
+										<div class="d-flex flex-row align-items-center mb-4">
+
+											<div class="form-outline flex-fill mb-0">
+
+												<label class="form-label" for="trainer_international">
+													<h4>trainer_international</h4>
+												</label><br>
+
+												<input type="checkbox" id="status_draft"
+													name="status_draft" /><b>Yes</b>
+												<input type="checkbox" id="status_publish" name="status_publish" />
+												<b>No</b><br>
+
+											</div>
+										</div>
+
+										<label class="form-label" for="trainer_pricing">
+											<h4>trainer_pricing</h4>
+										</label><br>
+										<input type="trainer_pricing" id="trainer_pricing" name="trainer_pricing" /><br>
+
+
+										<label class="form-label" for="trainer_course_specialization">
+											<h4>trainer_course_specialization</h4>
+										</label><br>
+										<textarea id="trainer_course_specialization"
+											name="trainer_course_specialization" placeholder="Write something.."
+											style="height:200px; width:350px;"></textarea><br>
+
+
+										<label class="form-label" for="trainer_skill_set">
+											<h4>trainer_skill_set</h4>
+										</label><br>
+										<input type="trainer_skill_set" id="trainer_skill_set"
+											name="trainer_skill_set" /><br>
+
+
+										<label class="form-label" for="trainer_enrolled_with">
+											<h4>trainer_enrolled_with</h4>
+										</label><br>
+
+										{% for x in learning_path %}
+										<select class="custom-select">
+											<option selected>Open this select menu</option>
+											<option value="1">{{ x.id }}</option>
+
+										</select>
+
+										{% endfor %}
+
+										<div class="form-check form-check-inline">
+											<h4>Trainer tier :- </h4>
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="option1">
+											<label class="form-check-label" for="trainer_tier">1</label><br>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="option2">
+											<label class="form-check-label" for="trainer_tier">2</label><br>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="option3">
+											<label class="form-check-label" for="trainer_tier">3</label><br>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="option3">
+											<label class="form-check-label" for="trainer_tier">4</label><br>
+										</div><br>
+
+
+
+										<label class="form-label" for="trainer_attachment">
+											<h4>trainer_attachment</h4>
+										</label><br>
+										<input type="file" id="trainer_attachment" multiple name="trainer_attachment" />
+
+
+										<div class="text-center">
+											<button type="submit" id="btnsave" value="submit"><b> Submit </b></button>
+										</div>
+									</form>
+
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	</div>
+</body>
+
+</html>

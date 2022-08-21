@@ -1,0 +1,292 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+	<link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<style>
+		/* Dropdown Button */
+		.dropbtn {
+			background-color: #04AA6D;
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+		}
+
+		/* The container <div> - needed to position the dropdown content */
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+
+		/* Dropdown Content (Hidden by Default) */
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f1f1f1;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+		}
+
+		/* Links inside the dropdown */
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+		/* Change color of dropdown links on hover */
+		.dropdown-content a:hover {
+			background-color: #ddd;
+		}
+
+		/* Show the dropdown menu on hover */
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		/* Change the background color of the dropdown button when the dropdown content is shown */
+		.dropdown:hover .dropbtn {
+			background-color: #3e8e41;
+		}
+	</style>
+	<title>Create Blog</title>
+
+</head>
+
+<body>
+
+	<!-- ################################################################ -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Trainers
+					</a>
+					<div class="dropdown-content">
+						<a href="{% url 'add_trainer' %}">Add a new trainer</a>
+						{% for x in trainer %}
+						<a href="{% url 'edit_trainer' x.trainer_id %}">{{ x.trainer_name }}</a>
+						{% endfor %}
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'add_lerning_path' %}">Add Learning Path</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'logout' %}">logout</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'search_a_trainer' %}">
+				{% csrf_token %}
+				<input class="form-control mr-sm-2" name="searched" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0">Search a trainer</button>
+			</form>
+		</div>
+	</nav>
+	<section style="background-color: rgb(62, 62, 62);">
+		<div class="">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-lg-12 col-xl-11">
+					<div class="card text-black" style="border-radius: 70px;">
+						<div class="card-body p-md-8">
+							<div class="row justify-content-left">
+								<div>
+
+									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add Trainers</p>
+									
+									<form method="POST" action="" enctype='multipart/form-data'>
+										{% csrf_token %}
+										<label class="form-label" for="trainer_name">
+											<h4>trainer_name</h4>
+										</label><br>
+										<input type="name" id="trainer_name" name="trainer_name" /><br>
+
+										<label class="form-label" for="phone_no">
+											<h4>phone_no</h4>
+										</label><br>
+										<input type="phone_no" id="phone_no" name="phone_no" /><br>
+
+
+										<label class="form-label" for="body">
+											<h4>Optional phone no</h4>
+										</label><br>
+										<input id="phone_no_optional" name='phone_no_optional' /><br>
+
+
+										<label class="form-label" for="email">
+											<h4>email</h4>
+										</label><br>
+										<input type="email" id="email" name="email" /><br>
+
+
+										<label class="form-label" for="email_optional">
+											<h4>email_optional</h4>
+										</label><br>
+										<input id="email_optional" name="email_optional" /><br>
+
+										<div class="d-flex flex-row align-items-center mb-4">
+
+											<div class="form-outline flex-fill mb-0">
+
+												<label class="form-label" for="gender">
+													<h4>gender</h4>
+												</label><br>
+
+												<input type="checkbox" name="gender" id="gender" value="Male" /><b>Male</b>
+												<input type="checkbox" id="gender" name="gender" value="Female" /><b>Female</b><br>
+
+											</div>
+										</div>
+
+										<label class="form-label" for="adderes">
+											<h4>Write your adderes</h4>
+										</label><br>
+										<textarea id="adderes" name="adderes" placeholder="Write something.."
+											style="height:50px; width:350px;"></textarea><br>
+
+
+
+
+										<div class="d-flex flex-row align-items-center mb-4">
+
+											<div class="form-outline flex-fill mb-0">
+
+												<label class="form-label" for="trainer_international">
+													<h4>trainer_international</h4>
+												</label><br>
+
+												<input type="checkbox" name="trainer_international" id="trainer_international" value="Yes" /><b>Yes</b>
+												<input type="checkbox" id="trainer_international" name="trainer_international" value="No" /><b>No</b><br>
+
+											</div>
+										</div>
+
+										<label class="form-label" for="trainer_pricing">
+											<h4>trainer_pricing</h4>
+										</label><br>
+										<input type="trainer_pricing" id="trainer_pricing" name="trainer_pricing" /><br>
+
+
+										<label class="form-label" for="trainer_course_specialization">
+											<h4>trainer_course_specialization</h4>
+										</label><br>
+										<textarea id="trainer_course_specialization"
+											name="trainer_course_specialization" placeholder="Write something.."
+											style="height:200px; width:350px;"></textarea><br>
+
+
+										<label class="form-label" for="trainer_skill_set">
+											<h4>trainer_skill_set</h4>
+										</label><br>
+										<input type="trainer_skill_set" id="trainer_skill_set"
+											name="trainer_skill_set" /><br>
+
+
+										<label class="form-label" for="trainer_enrolled_with">
+											<h4>trainer_enrolled_with</h4>
+										</label><br>
+
+
+										<select name="trainer_enrolled_with" id="trainer_enrolled_with"
+											class="btn btn-success bg-dark">
+											<option selected>Open this select menu</option>
+											{% for y in learning_path_info %}
+
+
+											<option value="{{ y.id }}">{{ y.id }}{{ y.name }}</option>
+											{% endfor %}
+										</select><br><br><br>
+
+
+										<div class="form-check form-check-inline">
+											<h4>Trainer tier :- </h4>
+
+
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="1">
+											<label class="form-check-label" for="trainer_tier">1</label><br><br><br>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="2">
+											<label class="form-check-label" for="trainer_tier">2</label><br>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="3">
+											<label class="form-check-label" for="trainer_tier">3</label><br>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="trainer_tier"
+												id="trainer_tier" value="4">
+											<label class="form-check-label" for="trainer_tier">4</label><br>
+										</div><br>
+
+
+
+										<label class="form-label" for="trainer_attachment">
+											<h4>trainer_attachment</h4>
+										</label><br>
+										<input required name="trainer_attachment" id="trainer_attachment" type="file"
+											multiple class="form-control-file">
+
+
+										<div class="text-center">
+											<button type="submit" id="btnsave" value="submit"><b> Submit </b></button>
+										</div>
+									</form>
+
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	</div>
+</body>
+
+</html>
